@@ -1,0 +1,85 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean id="helloJava" class="com.tutorialspoint.HelloJava" init-method="init" destroy-method="destroy">
+        <property name="message" value="Hello World" />
+    </bean>
+    <bean class="com.tutorialspoint.InitHelloJava" />
+
+    <bean id="helloJava2" class="com.tutorialspoint.HelloJava2" scope="singleton" />
+
+    <bean id="helloJava3Parent" class="com.tutorialspoint.HelloJava3Parent">
+        <property name="message1" value="hello java 3 parent message 1"/>
+        <property name="message2" value="hello java 3 parent message 2"/>
+    </bean>
+
+    <bean id="helloJava3Child" class="com.tutorialspoint.HelloJava3Child" parent="helloJava3Parent">
+        <property name="message3" value="hello java 3 child message 3" />
+    </bean>
+
+    <bean id="textEditor" class="com.tutorialspoint.TextEditor">
+        <property name="spellChecker">
+            <bean id="spellChecker" class="com.tutorialspoint.SpellChecker"/>
+        </property>
+    </bean>
+    
+    <bean id="javaCollections" class="com.tutorialspoint.JavaCollection">
+        <property name="addressList">
+            <list>
+                <value>China</value>
+                <value>Japan</value>
+                <value>Taiwan</value>
+                <value>Korea</value>
+            </list>
+        </property>
+        <property name="addressMap">
+            <map>
+                <entry key="1" value="China"/>
+                <entry key="2" value="Japan"/>
+                <entry key="3" value="Taiwan"/>
+                <entry key="4" value="Korea"/>
+            </map>
+        </property>
+        <property name="addressSet">
+            <set>
+                <value>China</value>
+                <value>Japan</value>
+                <value>Taiwan</value>
+                <value>Korea</value>
+            </set>
+        </property>
+        <property name="addressProp">
+            <props>
+                <prop key="one">China</prop>
+                <prop key="two">Japan</prop>
+                <prop key="three">Taiwan</prop>
+                <prop key="four">Korea</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Definition for student bean -->
+    <bean id = "student" class = "com.tutorialspoint.Student">
+        <property name = "name" value = "Zara" />
+        <property name = "age"  value = "11"/>
+    </bean>
+
+    <bean id="student1" class="com.tutorialspoint.Student">
+        <property name="name" value="Qiushi" />
+        <property name="age" value="28" />
+    </bean>
+
+    <bean id="textEditor2" class="com.tutorialspoint.TextEditor2"/>
+    <bean id="spellChecker2" class="com.tutorialspoint.SpellChecker2"/>
+
+    <bean id="textEditor3" class="com.tutorialspoint.TextEditor3"/>
+
+    <bean id="profile" class="com.tutorialspoint.Profile" />
+</beans>
